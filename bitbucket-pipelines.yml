@@ -20,7 +20,7 @@ pipelines:
           - bundle install
           - bundle exec rake
           - aws --version
-          - eb init My-Application -r us-west-2 -p arn:aws:elasticbeanstalk:us-west-2::platform
+          - eb init My-Application -r us-west-2
           - eb deploy MyApplication-production
 definitions:
   caches:
