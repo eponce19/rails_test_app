@@ -3,7 +3,7 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: ruby:2.5.3
+image: ruby:2.6.3
 
 pipelines:
   default:
@@ -20,7 +20,7 @@ pipelines:
           - bundle install
           - bundle exec rake
           - aws --version
-          - eb init My-Application -r us-west-2 -p arn:aws:elasticbeanstalk:us-west-2::platform/Puma with Ruby 2.6 running on 64bit Amazon Linux/2.11.0
+          - eb init My-Application -r us-west-2 -p arn:aws:elasticbeanstalk:us-west-2::platform
           - eb deploy MyApplication-production
 definitions:
   caches:
