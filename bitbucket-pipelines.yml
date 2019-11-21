@@ -14,7 +14,7 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - apt-get clean
           - apt-get update 
-          - apt-get install -y -f python-dev
+          - apt-get install -y python-dev
           - curl -O https://bootstrap.pypa.io/get-pip.py
           - python get-pip.py
           - pip install awsebcli --upgrade
