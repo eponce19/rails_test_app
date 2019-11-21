@@ -12,7 +12,10 @@ pipelines:
           - bundler
           - pip
         script: # Modify the commands below to build your repository.
-          - apt-get update && apt-get upgrade -f 
+          - rm /var/lib/apt/lists/* -vf
+          - apt-get clean
+          - apt-get update 
+          - apt-get upgrade
           - apt-get install -y -f python-dev
           - curl -O https://bootstrap.pypa.io/get-pip.py
           - python get-pip.py
