@@ -10,9 +10,28 @@ pipelines:
     - step:
         caches:
           - bundler
+          - pip
         script: # Modify the commands below to build your repository.
-          - bundle install
-
+          - apt-get update && apt-get install -y python-dev
+          - curl -O https://bootstrap.pypa.io/get-pip.py
+          - python get-pip.py
+          - pip install awsebcli --upgrade
+          - pip install awscli --upgrade
+          - bundle install --path vendor/bundle
+          - bundle exec rake
+          - aws --version
+          - eb init My-Application -r us-west-2 -p arn:aws:elasticbeanstalk:us-west-2::platform/Puma with Ruby 2.6 running on 64bit Amazon Linux/2.11.0
+          - eb deploy MyApplication-production
+        services:
+          - mysql
 definitions:
   caches:
-    bundler: ./vendor
+    bundler: vendor/bundle
+    pip: ~/.cache/pip
+  services:
+    mysql:
+      image: mysql
+      environment:
+        MYSQL_DB: 'myapp_test'
+        MYSQL_USER: 'root'
+        MYSQL_PASSWORD: ''
