@@ -12,19 +12,7 @@ pipelines:
           - bundler
           - pip
         script: # Modify the commands below to build your repository.
-          - apt-get update && apt-get upgrade -y 
-          - apt-get install -y build-essential git-core curl ssh
-          - curl -O https://bootstrap.pypa.io/get-pip.py
-          - apt-get install -y python-pip
-          - apt-get install -y libmysqlclient-dev
-          - python get-pip.py --user
-          - pip3 --version
-          - pip3 install awscli --upgrade --user
-          - bundle install --path vendor/bundle
-          - bundle exec rake
-          - aws --version
-          - eb init My-Application -r us-west-2 -p arn:aws:elasticbeanstalk:us-west-2::platform/Puma with Ruby 2.6 running on 64bit Amazon Linux/2.11.0
-          - eb deploy MyApplication-production
+          - bundle install
         services:
           - mysql
 definitions:
