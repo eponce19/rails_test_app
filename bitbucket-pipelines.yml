@@ -10,19 +10,9 @@ pipelines:
     - step:
         caches:
           - bundler
-          - pip
         script: # Modify the commands below to build your repository.
           - bundle install
-        services:
-          - mysql
+
 definitions:
   caches:
-    bundler: vendor/bundle
-    pip: ~/.cache/pip
-  services:
-    mysql:
-      image: mysql
-      environment:
-        MYSQL_DATABASE: 'myapp_test'
-        MYSQL_USER: 'root'
-        MYSQL_ROOT_PASSWORD: '\0'
+    bundler: ./vendor
