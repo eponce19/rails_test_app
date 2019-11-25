@@ -19,8 +19,6 @@ pipelines:
           - aws --version
           - bundle install
           - bundle exec rake
-          - eb init My-Application
-          - eb deploy MyApplication-production
 definitions:
   caches:
     bundler: ./vendor
